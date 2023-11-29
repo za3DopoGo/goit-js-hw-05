@@ -1,8 +1,6 @@
 let getTotalBalanceByGender = (users, gender) => {
-    let totalBalance = 0;
-    let arrOfBalance = users.filter(user => {return user.gender === gender})
-                            .map(user => user.balance)
-                            .forEach(balance => {totalBalance += balance});
+    let totalBalance = users.filter(user => {return user.gender === gender})
+                            .reduce((balance, user) => {return balance += user.balance}, 0);
     return totalBalance;
 }
 
